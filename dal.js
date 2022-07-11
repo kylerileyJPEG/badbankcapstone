@@ -1,6 +1,6 @@
 const dotenv = require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient;
-const url         = 'mongodb+srv://kylechristopherriley:kylechristopherriley@cluster0.fdvh7.mongodb.net/?retryWrites=true&w=majority';
+const url         = 'mongodb+srv://kylechristopherriley:kylechristopherriley@badbank.fdvh7.mongodb.net/?retryWrites=true&w=majority';
 let db            = null;
 const dbName      = "badbank"
 
@@ -24,7 +24,7 @@ const getDbInstance = (config) => new Promise((resolve,reject) => {
 const doSomeDbOperations = async() => {
     //hardcoding it here, but this config will probably come from environment variables in your project
     const config = {
-        dbUrl: "mongodb+srv://kylechristopherriley:kylechristopherriley@cluster0.fdvh7.mongodb.net/?retryWrites=true&w=majority",
+        dbUrl: "mongodb+srv://kylechristopherriley:kylechristopherriley@badbank.fdvh7.mongodb.net/?retryWrites=true&w=majority",
         dbName: "badbank"
     };
 
