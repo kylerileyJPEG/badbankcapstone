@@ -1,5 +1,5 @@
 const MongoClient = require('mongodb').MongoClient;
-const url         = 'mongodb://localhost:27017';
+const url         = 'mongodb+srv://kylechristopherriley:kylechristopherriley@cluster0.fdvh7.mongodb.net/?retryWrites=true&w=majority';
 let db            = null;
 const dotenv = require('dotenv').config();
 
