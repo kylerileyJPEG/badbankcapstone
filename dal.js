@@ -1,6 +1,6 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://kylechristopherriley:kylechristopherriley@badbank.fdvh7.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+const url = "mongodb+srv://kylechristopherriley:kylechristopherriley@badbank.fdvh7.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
   // perform actions on the collection object
@@ -12,7 +12,7 @@ const dotenv = require('dotenv').config();
 
 
 // connect to mongo
-MongoClient.connect(uri, {useUnifiedTopology: true}, function(err, client) {
+MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
     console.log("Connected successfully to db server");
 
     // connect to myproject database
