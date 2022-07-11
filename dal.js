@@ -1,5 +1,11 @@
-const MongoClient = require('mongodb').MongoClient;
-const url         = 'mongodb://kylechristopherriley:kylechristopherriley@cluster0.fdvh7.mongodb.net/?retryWrites=true&w=majority';
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://kylechristopherriley:kylechristopherriley@badbank.fdvh7.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 let db            = null;
 const dotenv = require('dotenv').config();
 
