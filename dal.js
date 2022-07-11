@@ -1,7 +1,10 @@
 const MongoClient = require('mongodb').MongoClient;
-const url         = 'mongodb+srv://kylechristopherriley:kylechristopherriley@cluster0.fdvh7.mongodb.net/?retryWrites=true&w=majority';
+const url         = 'mongodb://localhost:27017';
 let db            = null;
- 
+const dotenv = require('dotenv').config();
+
+
+
 // connect to mongo
 MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
     console.log("Connected successfully to db server");
