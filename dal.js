@@ -97,3 +97,11 @@ function all(){
 
 
 module.exports = {create, findOne, find, update, all};
+
+}catch(e){
+    console.error(`ERROR: `,e);
+}
+
+}
+
+doSomeDbOperations();
