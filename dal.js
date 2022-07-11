@@ -2,15 +2,34 @@ const dotenv = require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient;
 const url         = 'mongodb+srv://kylechristopherriley:kylechristopherriley@cluster0.fdvh7.mongodb.net/?retryWrites=true&w=majority';
 let db            = null;
-
+const dbName      = "badbank"
 
 // connect to mongo
-MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
-    console.log("Connected successfully to db server");
+const getDbInstance = (config) => new Promise((resolve,reject) => {
+    const client = new MongoClient(config.dbUrl, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    });
+    client.connect((error) => {
+        if(error){
+            console.error(error);
+            reject(error);
+        }
+        let db = client.db(config.dbName);
+        resolve(db);
+    })
+})
 
-    // connect to myproject database
-    db = client.db('badbank');
-});
+
+const doSomeDbOperations = async() => {
+    //hardcoding it here, but this config will probably come from environment variables in your project
+    const config = {
+        dbUrl: "mongodb+srv://kylechristopherriley:kylechristopherriley@cluster0.fdvh7.mongodb.net/?retryWrites=true&w=majority",
+        dbName: "badbank"
+    };
+
+    try{
+        const db = await getDbInstance(config);
 
 // create user account
 function create(name, email, password){
