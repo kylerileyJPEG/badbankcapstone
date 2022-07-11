@@ -1,8 +1,7 @@
-const MongoClient = require('mongodb').MongoClient;
-const url         = 'mongodb://kylechristopherriley:kylechristopherriley@cluster0.fdvh7.mongodb.net/?retryWrites=true&w=majority';
-let db            = null;
 const dotenv = require('dotenv').config();
-
+const MongoClient = require('mongodb').MongoClient;
+const url         = 'mongodb+srv://kylechristopherriley:kylechristopherriley@cluster0.fdvh7.mongodb.net/?retryWrites=true&w=majority';
+let db            = null;
 
 
 // connect to mongo
@@ -10,7 +9,7 @@ MongoClient.connect(url, {useUnifiedTopology: true}, function(err, client) {
     console.log("Connected successfully to db server");
 
     // connect to myproject database
-    db = client.db('myproject');
+    db = client.db('badbank');
 });
 
 // create user account

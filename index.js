@@ -1,10 +1,25 @@
 var express = require('express');
-var app     = express();
-var cors    = require('cors');
-var dal     = require('./dal.js');
-const e = require('express');
-const dotenv = require('dotenv').config();
-console.log(process.env.MONGO_URL);
+var app = express();
+var cors = require('cors');
+var dal = require('./dal.js');
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+const swaggerJsdoc = require('swagger-jsdoc');
+
+const swaggerOptions = {
+    swaggerDefinition: {
+        info: {
+            title: 'BadBank',
+            version: '1.0.0'
+        }
+    },
+    apis: ['./index.js']
+};
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // used to serve static files from public directory
 app.use(express.static('public'));
